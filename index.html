@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>А & К • Свадьба в лесу</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Pacifico&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Декоративные элементы -->
+  <div class="floral-decor" aria-hidden="true">
+    <svg class="pine-branch pine-1" viewBox="0 0 200 100">
+      <path d="M0 50 Q50 45 100 50 Q150 55 200 50" stroke="var(--pine-light)" stroke-width="2" fill="none" opacity="0.5"/>
+      <circle cx="30" cy="48" r="5" fill="var(--pine-cone)"/>
+      <circle cx="60" cy="52" r="4" fill="var(--pine-cone)"/>
+      <circle cx="90" cy="49" r="5" fill="var(--pine-cone)"/>
+      <circle cx="120" cy="51" r="4" fill="var(--pine-cone)"/>
+      <circle cx="150" cy="48" r="5" fill="var(--pine-cone)"/>
+      <circle cx="180" cy="52" r="4" fill="var(--pine-cone)"/>
+    </svg>
+    <svg class="flower flower-1" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="7" fill="var(--flower-cream)"/>
+      <ellipse cx="50" cy="28" rx="11" ry="19" fill="var(--flower-white)"/>
+      <ellipse cx="72" cy="50" rx="11" ry="19" fill="var(--flower-white)" transform="rotate(90 72 50)"/>
+      <ellipse cx="50" cy="72" rx="11" ry="19" fill="var(--flower-white)"/>
+      <ellipse cx="28" cy="50" rx="11" ry="19" fill="var(--flower-white)" transform="rotate(90 28 50)"/>
+    </svg>
+    <svg class="flower flower-2" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="6" fill="var(--flower-honey)"/>
+      <path d="M50 25 Q62 38 50 50 Q38 38 50 25" fill="var(--flower-cream)"/>
+      <path d="M50 75 Q62 62 50 50 Q38 62 50 75" fill="var(--flower-cream)"/>
+      <path d="M25 50 Q38 62 50 50 Q38 38 25 50" fill="var(--flower-cream)"/>
+      <path d="M75 50 Q62 62 50 50 Q62 38 75 50" fill="var(--flower-cream)"/>
+    </svg>
+    <svg class="pine-branch pine-2" viewBox="0 0 200 100">
+      <path d="M0 50 Q50 55 100 50 Q150 45 200 50" stroke="var(--pine-light)" stroke-width="2" fill="none" opacity="0.4"/>
+      <circle cx="40" cy="51" r="4" fill="var(--pine-cone)"/>
+      <circle cx="80" cy="49" r="5" fill="var(--pine-cone)"/>
+      <circle cx="120" cy="52" r="4" fill="var(--pine-cone)"/>
+      <circle cx="160" cy="48" r="5" fill="var(--pine-cone)"/>
+    </svg>
+    <svg class="pinecone pinecone-1" viewBox="0 0 60 100">
+      <ellipse cx="30" cy="50" rx="18" ry="40" fill="var(--pine-cone)"/>
+      <ellipse cx="30" cy="35" rx="14" ry="25" fill="var(--pine-cone-light)"/>
+      <ellipse cx="30" cy="65" rx="14" ry="25" fill="var(--pine-cone-light)"/>
+    </svg>
+    <svg class="pinecone pinecone-2" viewBox="0 0 60 100">
+      <ellipse cx="30" cy="50" rx="16" ry="38" fill="var(--pine-cone)"/>
+      <ellipse cx="30" cy="38" rx="12" ry="22" fill="var(--pine-cone-light)"/>
+      <ellipse cx="30" cy="62" rx="12" ry="22" fill="var(--pine-cone-light)"/>
+    </svg>
+  </div>
+
+  <!-- Индикаторы секций -->
+  <div class="scroll-progress" aria-hidden="true">
+    <span class="scroll-dot active"></span>
+    <span class="scroll-dot"></span>
+    <span class="scroll-dot"></span>
+    <span class="scroll-dot"></span>
+    <span class="scroll-dot"></span>
+    <span class="scroll-dot"></span>
+  </div>
+
+  <!-- Секция 1: Главная -->
+  <section class="page" id="home">
+    <div class="content-wrapper">
+      <p class="save-the-date">WEDDING DAY</p>
+      <p class="finally-text">наконец-то</p>
+      <h1 class="main-title">МЫ ЖЕНИМСЯ</h1>
+      <div class="childhood-dialogue">
+        <p class="dialogue-left">— интересно, кто будет моим мужем?</p>
+        <p class="dialogue-right">— им буду я!</p>
+      </div>
+      <div class="childhood-photos">
+        <div class="photo-cutout girl">
+          <img src="https://images.unsplash.com/photo-1503919545889-aef6d293c34c?q=80&w=600&auto=format&fit=crop" alt="Она">
+        </div>
+        <div class="photo-cutout boy">
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=600&auto=format&fit=crop" alt="Он">
+        </div>
+      </div>
+      <div class="invitation-text">
+        <p>Дорогие друзья и близкие,</p>
+        <p>Приглашаем вас разделить с нами свадебное торжество</p>
+        <p class="date-highlight">08 . 08 . 2026 • 17:00</p>
+      </div>
+      <div class="calendar-mockup">
+        <p class="month-name">август</p>
+        <div class="calendar-grid">
+          <span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span>
+          <span></span><span></span><span></span><span></span><span></span><span>1</span><span>2</span>
+          <span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+          <span class="highlight-day"><span class="day-number">8</span></span>
+          <span>9</span>
+        </div>
+      </div>
+    </div>
+    <!-- 👇 ИНДИКАТОР ПРОКРУТКИ -->
+    <div class="scroll-hint" data-page-scroll-hint>
+      <span class="scroll-hint-text">Листайте вниз</span>
+      <div class="scroll-hint-arrow"></div>
+    </div>
+    <div class="invite-ticker">
+      <div class="ticker-track">
+        <span class="ticker-item">вы приглашены</span>
+        <span class="ticker-item">вы приглашены</span>
+        <span class="ticker-item">вы приглашены</span>
+        <span class="ticker-item">вы приглашены</span>
+        <span class="ticker-item">вы приглашены</span>
+        <span class="ticker-item">вы приглашены</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секция 2: Тайминг дня -->
+  <section class="page" id="timeline">
+    <div class="content-wrapper">
+      <h2>Тайминг дня</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="time-circle">15:00</div>
+          <p>Сбор гостей</p>
+        </div>
+        <div class="timeline-item">
+          <div class="time-circle">16:00</div>
+          <p>Церемония</p>
+        </div>
+        <div class="timeline-item">
+          <div class="time-circle">17:00</div>
+          <p>Банкет</p>
+        </div>
+      </div>
+      <div class="timer-container" id="timer">
+        <div class="timer-item">
+          <span class="timer-number" id="days">00</span>
+          <span class="timer-label">дней</span>
+        </div>
+        <div class="timer-separator">:</div>
+        <div class="timer-item">
+          <span class="timer-number" id="hours">00</span>
+          <span class="timer-label">часов</span>
+        </div>
+        <div class="timer-separator">:</div>
+        <div class="timer-item">
+          <span class="timer-number" id="minutes">00</span>
+          <span class="timer-label">минут</span>
+        </div>
+        <div class="timer-separator">:</div>
+        <div class="timer-item">
+          <span class="timer-number" id="seconds">00</span>
+          <span class="timer-label">сек</span>
+        </div>
+      </div>
+    </div>
+    <!-- 👇 ИНДИКАТОР ПРОКРУТКИ -->
+    <div class="scroll-hint" data-page-scroll-hint>
+      <span class="scroll-hint-text">Листайте вниз</span>
+      <div class="scroll-hint-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Секция 3: Локация -->
+  <section class="page" id="location">
+    <div class="content-wrapper">
+      <h2>Локация</h2>
+      <div class="location-section">
+        <div class="slider-container">
+          <div class="slider-wrapper">
+            <div class="slide"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" alt="Фото 1"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0202128?q=80&w=1000&auto=format&fit=crop" alt="Фото 2"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=1000&auto=format&fit=crop" alt="Фото 3"></div>
+          </div>
+          <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
+          <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
+          <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
+        </div>
+        <p class="location-name">IVA Bistro</p>
+        <p class="location-address">Московская область</p>
+      </div>
+      <div class="dress-code-section">
+        <p class="dress-code-title">Дресс-код: светлые тона</p>
+        <div class="color-palette">
+          <div class="color-circle" style="background: #FFFFFF; border: 1px solid #E0E0E0;" title="Белый"></div>
+          <div class="color-circle" style="background: #F5F5DC;" title="Бежевый"></div>
+          <div class="color-circle" style="background: #FDF8F0;" title="Кремовый"></div>
+          <div class="color-circle" style="background: #FFE4E1;" title="Пудровый"></div>
+          <div class="color-circle" style="background: #E8D5D9;" title="Нежно-розовый"></div>
+          <div class="color-circle" style="background: #D8CFC7;" title="Серо-бежевый"></div>
+          <div class="color-circle" style="background: #C9B8A8;" title="Тауп"></div>
+          <div class="color-circle" style="background: #B8A99A;" title="Песочный"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 👇 ИНДИКАТОР ПРОКРУТКИ -->
+    <div class="scroll-hint" data-page-scroll-hint>
+      <span class="scroll-hint-text">Листайте вниз</span>
+      <div class="scroll-hint-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Секция 4: История -->
+  <section class="page" id="gallery">
+    <div class="content-wrapper">
+      <h2>Наша история</h2>
+      <p class="story-text">
+        Всё началось в 2020 году.<br>
+        Тысячи километров, сотни воспоминаний<br>
+        и одна большая любовь.
+      </p>
+      <p class="story-bold">С 2026 года — мы семья.</p>
+      <div class="photo-gallery">
+        <div class="gallery-photo">
+          <img src="https://images.unsplash.com/photo-1522673607200-1645062cd958?q=80&w=800&auto=format&fit=crop" alt="Мы">
+        </div>
+      </div>
+    </div>
+    <!-- 👇 ИНДИКАТОР ПРОКРУТКИ -->
+    <div class="scroll-hint" data-page-scroll-hint>
+      <span class="scroll-hint-text">Листайте вниз</span>
+      <div class="scroll-hint-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Секция 5: RSVP -->
+  <section class="page" id="rsvp">
+    <div class="content-wrapper">
+      <h2>Подтвердите присутствие</h2>
+      <form id="rsvpForm">
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="attending" value="yes" checked>
+            <span class="radio-custom"></span>
+            <span>Я с радостью приду</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="attending" value="no">
+            <span class="radio-custom"></span>
+            <span>К сожалению, не смогу</span>
+          </label>
+        </div>
+        <div>
+          <label class="form-label">Ваше имя</label>
+          <input type="text" id="name" placeholder="Иван и Мария" required>
+        </div>
+        <div class="guests-section" id="guestsSection">
+          <label class="form-label">С кем вы будете?</label>
+          <select id="guests">
+            <option value="1">Один</option>
+            <option value="2">С парой (+1)</option>
+            <option value="3">С семьей</option>
+          </select>
+        </div>
+        <div id="wishesSection">
+          <label class="form-label">Пожелания</label>
+          <textarea id="wishes" placeholder="Аллергии, предпочтения..."></textarea>
+        </div>
+        <button type="submit">Отправить ответ</button>
+      </form>
+    </div>
+    <!-- 👇 ИНДИКАТОР ПРОКРУТКИ -->
+    <div class="scroll-hint" data-page-scroll-hint>
+      <span class="scroll-hint-text">Листайте вниз</span>
+      <div class="scroll-hint-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Секция 6: Спасибо (последняя — без подсказки) -->
+  <section class="page" id="thanks">
+    <div class="content-wrapper">
+      <h1 class="thanks-title">Спасибо!</h1>
+      <p>До встречи на празднике 💕</p>
+      <a href="#home" class="back-link" onclick="scrollToSection(0); return false;">↑ Вернуться в начало</a>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
