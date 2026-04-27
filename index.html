@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Артём & Ксения — 08.08.2026</title>
+<script src="keys.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="keys.js"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
@@ -775,7 +775,7 @@ footer::before{
 </footer>
 
 <script>
-(function(){ emailjs.init({ publicKey: "EMAILJS_PUBLIC_KEY" }); })();
+(function(){ emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); })();
 
 /* ── floating hearts ── */
 (function(){
@@ -851,10 +851,16 @@ async function submitRSVP(){
   btn.disabled = true; btn.textContent = 'Отправляем…'; msg.classList.add('on');
   const aMap = { y:'С радостью!', m:'Постараюсь', n:'К сожалению, нет' };
   const alcLabels = alSel.size > 0 ? [...alSel].map(k => alMap[k]).join(', ') : 'Не указано';
+
+  const now = new Date();
+  const timeString = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+  
   try {
-    await emailjs.send('EMAILJS_SERVICE_ID', 'EMAILJS_TEMPLATE_ID', {
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      
       to_email: 'jakeandkot@gmail.com',
       guest_name: `${fn} ${document.getElementById('flname').value.trim()}`,
+      time: timeString,
       attendance: aMap[att],
       with_who: document.getElementById('fwith').value.trim() || 'Только сам(а)',
       alcohol: alcLabels,
