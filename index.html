@@ -775,7 +775,7 @@ footer::before{
 </footer>
 
 <script>
-(function(){ emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); })();
+(function(){ emailjs.init({ publicKey: K7d5GlDFaiz7CI6St }); })();
 
 /* ── floating hearts ── */
 (function(){
@@ -856,7 +856,7 @@ async function submitRSVP(){
   const timeString = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
   
   try {
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    await emailjs.send(service_qn7xzcl, template_0ba6m8g, {
       
       to_email: 'jakeandkot@gmail.com',
       guest_name: `${fn} ${document.getElementById('flname').value.trim()}`,
