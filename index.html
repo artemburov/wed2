@@ -709,49 +709,57 @@ footer::before{
       <div class="rsvp-card">
         <p class="rsvp-note">Дорогой гость, ждём ваш ответ до 1 июня 2026 ♡</p>
 
-        <div id="rsvpForm">
+        <form id="rsvpForm" action="https://formsubmit.co/ajax/jakeandkot@gmail.com" method="POST">
+          
+          <!-- Скрытые настройки FormSubmit -->
+          <input type="hidden" name="_subject" value="🎉 Новый RSVP ответ!">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          
           <div class="f2">
-            <div class="fg"><label class="fl">Имя</label><input type="text" class="fi" id="fname" placeholder="Иван"></div>
-            <div class="fg"><label class="fl">Фамилия</label><input type="text" class="fi" id="flname" placeholder="Петров"></div>
+            <div class="fg"><label class="fl">Имя</label><input type="text" class="fi" name="Имя" id="fname" placeholder="Иван" required></div>
+            <div class="fg"><label class="fl">Фамилия</label><input type="text" class="fi" name="Фамилия" id="flname" placeholder="Петров" required></div>
           </div>
 
           <div class="fg">
             <label class="fl">Вы придёте?</label>
             <div class="choice-row">
-              <button class="choice on" id="by" onclick="setAtt('y')">С радостью 🥂</button>
-              <button class="choice" id="bm" onclick="setAtt('m')">Постараюсь</button>
-              <button class="choice" id="bn" onclick="setAtt('n')">К сожалению, нет</button>
+              <button type="button" class="choice on" id="by" onclick="setAtt('y')">С радостью 🥂</button>
+              <button type="button" class="choice" id="bm" onclick="setAtt('m')">Постараюсь</button>
+              <button type="button" class="choice" id="bn" onclick="setAtt('n')">К сожалению, нет</button>
             </div>
+            <input type="hidden" name="Присутствие" id="attInput" value="С радостью!">
           </div>
 
           <div class="fg">
             <label class="fl">С кем придёте?</label>
-            <input type="text" class="fi" id="fwith" placeholder="Имена гостей (или оставьте пустым)">
+            <input type="text" class="fi" name="С_кем" id="fwith" placeholder="Имена гостей (или оставьте пустым)">
           </div>
 
           <div class="fg">
             <label class="fl">Алкоголь (можно несколько)</label>
             <div class="choice-row">
-              <button class="choice" id="al1" onclick="togAl('wine',this)">Вино</button>
-              <button class="choice" id="al2" onclick="togAl('strong',this)">Крепкий</button>
-              <button class="choice" id="al3" onclick="togAl('beer',this)">Пиво</button>
-              <button class="choice" id="al4" onclick="togAl('none',this)">Не пью</button>
+              <button type="button" class="choice" id="al1" onclick="togAl('wine',this)">Вино</button>
+              <button type="button" class="choice" id="al2" onclick="togAl('strong',this)">Крепкий</button>
+              <button type="button" class="choice" id="al3" onclick="togAl('beer',this)">Пиво</button>
+              <button type="button" class="choice" id="al4" onclick="togAl('none',this)">Не пью</button>
             </div>
+            <input type="hidden" name="Алкоголь" id="alcoholInput" value="Не указано">
           </div>
 
           <div class="fg">
             <label class="fl">Аллергии / непереносимости</label>
-            <input type="text" class="fi" id="fallergy" placeholder="Укажите, если есть (или оставьте пустым)">
+            <input type="text" class="fi" name="Аллергии" id="fallergy" placeholder="Укажите, если есть (или оставьте пустым)">
           </div>
 
           <div class="fg">
             <label class="fl">Ваш трек для танцпола</label>
-            <input type="text" class="fi" id="ftrack" placeholder="Исполнитель — Название">
+            <input type="text" class="fi" name="Трек" id="ftrack" placeholder="Исполнитель — Название">
           </div>
 
           <div class="send-note" id="sendMsg">Отправляем ваш ответ…</div>
-          <button class="btn-submit" id="fsubBtn" onclick="submitRSVP()">Отправить ответ</button>
-        </div>
+          <button type="submit" class="btn-submit" id="fsubBtn">Отправить ответ</button>
+        </form>
 
         <div class="rsvp-ok" id="fSuccess">
           <h3>Спасибо ♡</h3>
@@ -775,8 +783,6 @@ footer::before{
 </footer>
 
 <script>
-(function(){ emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); })();
-
 /* ── floating hearts ── */
 (function(){
   const c = document.getElementById('fh');
@@ -825,6 +831,8 @@ let att = 'y';
 function setAtt(v){
   att = v;
   ['y','m','n'].forEach(k => document.getElementById('b'+k).classList.toggle('on', k===v));
+  const attMap = { y: 'С радостью!', m: 'Постараюсь', n: 'К сожалению, нет' };
+  document.getElementById('attInput').value = attMap[v];
 }
 
 /* ── alcohol multi-select ── */
@@ -841,58 +849,75 @@ function togAl(val, btn){
     if(alSel.has(val)){ alSel.delete(val); btn.classList.remove('on'); }
     else { alSel.add(val); btn.classList.add('on'); }
   }
+  const alcLabels = alSel.size > 0 ? [...alSel].map(k => alMap[k]).join(', ') : 'Не указано';
+  document.getElementById('alcoholInput').value = alcLabels;
 }
 
-/* ── submit ── */
-async function submitRSVP(){
-  const btn = document.getElementById('fsubBtn'), msg = document.getElementById('sendMsg');
+/* ── submit (FormSubmit) ── */
+document.getElementById('rsvpForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  
+  console.log('📤 Начинаем отправку...');
+  
+  const btn = document.getElementById('fsubBtn');
+  const msg = document.getElementById('sendMsg');
   const fn = document.getElementById('fname').value.trim();
+  
   if(!fn){ alert('Пожалуйста, введите имя'); return; }
-  btn.disabled = true; btn.textContent = 'Отправляем…'; msg.classList.add('on');
-  const aMap = { y:'С радостью!', m:'Постараюсь', n:'К сожалению, нет' };
-  const alcLabels = alSel.size > 0 ? [...alSel].map(k => alMap[k]).join(', ') : 'Не указано';
-
-  const now = new Date();
-  const timeString = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+  
+  btn.disabled = true; 
+  btn.textContent = 'Отправляем…'; 
+  msg.classList.add('on');
   
   try {
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      
-      to_email: 'jakeandkot@gmail.com',
-      guest_name: `${fn} ${document.getElementById('flname').value.trim()}`,
-      time: timeString,
-      attendance: aMap[att],
-      with_who: document.getElementById('fwith').value.trim() || 'Только сам(а)',
-      alcohol: alcLabels,
-      allergies: document.getElementById('fallergy').value.trim() || 'Нет',
-      track: document.getElementById('ftrack').value.trim() || 'Не указан',
-    });
-  
-      // === ДИНАМИЧЕСКИЙ ТЕКСТ БЛАГОДАРНОСТИ ===
-    document.getElementById('rsvpForm').style.display = 'none';
-    const successBlock = document.getElementById('fSuccess');
-    const h3 = successBlock.querySelector('h3');
-    const p = successBlock.querySelector('p');
+    const formData = new FormData(this);
     
-    if (att === 'y') {
-        h3.textContent = 'Спасибо! ♡';
-        p.textContent = 'Мы очень рады, что вы будете с нами 8 августа 2026 года!';
-    } else if (att === 'm') {
-        h3.textContent = 'Спасибо за ответ!';
-        p.textContent = 'Будем надеяться, что у вас получится прийти. Ждём вас!';
-    } else {
-        h3.textContent = 'Спасибо, что предупредили';
-        p.textContent = 'Очень жаль, что не получится увидеться. Надеемся увидеться в другой раз!';
+    // Выводим все данные в консоль
+    console.log('📋 Данные формы:');
+    for(let [key, value] of formData.entries()){
+      console.log(key + ': ' + value);
     }
-    successBlock.classList.add('on');
-    // === КОНЕЦ ИЗМЕНЕНИЙ ===
     
-  } catch(e){
-    console.error(e);
-    btn.disabled = false; btn.textContent = 'Отправить ответ'; msg.classList.remove('on');
-    alert('Ошибка отправки. Попробуйте ещё раз.');
+    const response = await fetch(this.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    
+    console.log('📡 Статус ответа:', response.status);
+    const result = await response.json();
+    console.log('✅ Ответ сервера:', result);
+    
+    if(response.ok){
+      this.style.display = 'none';
+      const successBlock = document.getElementById('fSuccess');
+      const h3 = successBlock.querySelector('h3');
+      const p = successBlock.querySelector('p');
+      
+      if (att === 'y') {
+          h3.textContent = 'Спасибо! ♡';
+          p.textContent = 'Мы очень рады, что вы будете с нами 8 августа 2026 года!';
+      } else if (att === 'm') {
+          h3.textContent = 'Спасибо за ответ!';
+          p.textContent = 'Будем надеяться, что у вас получится прийти. Ждём вас!';
+      } else {
+          h3.textContent = 'Спасибо, что предупредили';
+          p.textContent = 'Очень жаль, что не получится увидеться. Надеемся увидеться в другой раз!';
+      }
+      successBlock.classList.add('on');
+      console.log('✅ Форма успешно отправлена!');
+    } else {
+      throw new Error('Ошибка сервера: ' + response.status);
+    }
+  } catch(err){
+    console.error('❌ ОШИБКА ОТПРАВКИ:', err);
+    btn.disabled = false; 
+    btn.textContent = 'Отправить ответ'; 
+    msg.classList.remove('on');
+    alert('Ошибка отправки: ' + err.message + '. Проверьте консоль (F12).');
   }
-}
+
+});
 </script>
 </body>
 </html>
