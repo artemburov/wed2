@@ -774,7 +774,7 @@ footer::before{
 </footer>
 
 <script>
-(function(){ emailjs.init({ publicKey: "YOUR_EMAILJS_PUBLIC_KEY" }); })();
+(function(){ emailjs.init({ publicKey: "EMAILJS_PUBLIC_KEY" }); })();
 
 /* ── floating hearts ── */
 (function(){
@@ -851,7 +851,7 @@ async function submitRSVP(){
   const aMap = { y:'С радостью!', m:'Постараюсь', n:'К сожалению, нет' };
   const alcLabels = alSel.size > 0 ? [...alSel].map(k => alMap[k]).join(', ') : 'Не указано';
   try {
-    await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+    await emailjs.send('EMAILJS_SERVICE_ID', 'EMAILJS_TEMPLATE_ID', {
       to_email: 'jakeandkot@gmail.com',
       guest_name: `${fn} ${document.getElementById('flname').value.trim()}`,
       attendance: aMap[att],
