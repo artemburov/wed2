@@ -867,8 +867,26 @@ async function submitRSVP(){
       allergies: document.getElementById('fallergy').value.trim() || 'Нет',
       track: document.getElementById('ftrack').value.trim() || 'Не указан',
     });
+  
+      // === ДИНАМИЧЕСКИЙ ТЕКСТ БЛАГОДАРНОСТИ ===
     document.getElementById('rsvpForm').style.display = 'none';
-    document.getElementById('fSuccess').classList.add('on');
+    const successBlock = document.getElementById('fSuccess');
+    const h3 = successBlock.querySelector('h3');
+    const p = successBlock.querySelector('p');
+    
+    if (att === 'y') {
+        h3.textContent = 'Спасибо! ♡';
+        p.textContent = 'Мы очень рады, что вы будете с нами 8 августа 2026 года!';
+    } else if (att === 'm') {
+        h3.textContent = 'Спасибо за ответ!';
+        p.textContent = 'Будем надеяться, что у вас получится прийти. Ждём вас!';
+    } else {
+        h3.textContent = 'Спасибо, что предупредили';
+        p.textContent = 'Очень жаль, что не получится увидеться. Надеемся увидеться в другой раз!';
+    }
+    successBlock.classList.add('on');
+    // === КОНЕЦ ИЗМЕНЕНИЙ ===
+    
   } catch(e){
     console.error(e);
     btn.disabled = false; btn.textContent = 'Отправить ответ'; msg.classList.remove('on');
